@@ -1,9 +1,66 @@
-<html>
-  <head>      
-    <title>Redirecting</title>
-    <meta http-equiv="refresh" content="0;URL='https://github.com/ngs/ci2go/blob/master/docs/token-uri-scheme.md'" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/doc.css">
+    <title>Trouble signing in to CI2Go?</title>
+    <script>
+	    function onSubmit(e) {
+		    e.preventDefault();
+		    var form = e.target
+		    	  , token = form.token.value
+		      , valid = /^[a-f0-9]{40}$/.test(token)
+		      , uri
+		      , qr
+		      ;
+		    if (!valid) {
+			    alert('Please input valid API token');
+			    return;
+		    }
+		    uri = 'ci2go://ci2go.app/token/' + token
+		    if (navigator.userAgent.indexOf('iPhone OS') !== -1) {
+			    document.location = uri;
+		    }
+			qr = qrcode(4, 'L');
+			qr.addData(uri);
+			qr.make();
+			document.getElementById('qrcode').innerHTML = qr.createImgTag(5);
+			document.getElementById('qr').style.display = 'block';
+			document.location.href = '#qr';
+	    }
+	</script>
   </head>
   <body>
-    <p>Redirecting to <a href="https://github.com/ngs/ci2go/blob/master/docs/token-uri-scheme.md">https://github.com/ngs/ci2go/blob/master/docs/token-uri-scheme.md</a>.</p> 
+  	<div class="container doc">
+	    <h1>Trouble signing in to CI2Go?</h1>
+	    <section>
+		    <p>If you are experiencing trouble with signing in to CI2Go, the app supports handling the following format of URL scheme trails with CircleCI API token.</p>
+		    <p class="sample">
+			    <code>ci2go://ci2go.app/token/<var>${TOKEN}</var></code>
+		    </p>
+	    </section>
+	    <section>
+		    <h2>Step by step</h2>
+		    <h3>Step 1. Create New Personal API Token</h3>
+		    <p>Create new Personal API Token on <a href="https://circleci.com/account/api" target="_blank">CircleCI</a> and copy generated API token to your clipboard.</p>
+		    <h3>Step 2. Paste API Token</h3>
+		    <p>Paste the API token to the below input field and tap <strong>Submit</strong> button.</p>
+		    <form onsubmit="onSubmit(event)">
+			    <div class="form-group">
+				    <input class="form-control form-control-lg" type="text" name="token" placeholder="CircleCI API Token">
+  			    </div>
+  			    <div class="form-group">
+				    <button type="submit" name="submitBtn" class="btn btn-lg btn-block btn-primary" id="submit-token-btn">Submit</button>
+  			    </div>
+		    </form>
+		    <div id="qr" style="display: none; padding: 50px 0;">
+			    <p>Scan this QR code with your iOS device to launch CI2Go.</p>
+			    <div id="qrcode"></div>
+		    </div>
+	    </section>
+  	</div>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.3/qrcode.min.js"></script>
   </body>
 </html>
