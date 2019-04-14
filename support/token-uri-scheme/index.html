@@ -27,7 +27,7 @@
 			qr.addData(uri);
 			qr.make();
 			document.getElementById('qrcode').innerHTML = qr.createImgTag(5);
-			document.getElementById('qr').style.display = 'block';
+			document.getElementById('qr').style.visibility = 'visible';
 			document.location.href = '#qr';
 	    }
 	</script>
@@ -36,7 +36,8 @@
   	<div class="container doc">
 	    <h1>Trouble signing in to CI2Go?</h1>
 	    <section>
-		    <p>If you are experiencing trouble with signing in to CI2Go, the app supports handling the following format of URL scheme trails with CircleCI API token.</p>
+		    <p>If you are experiencing trouble with signing in to CI2Go, try authenticating by opening with URI schema.</p>
+		    <p>The app supports handling the following format of URL scheme trails with CircleCI API token.</p>
 		    <p class="sample">
 			    <code>ci2go://ci2go.app/token/<var>${TOKEN}</var></code>
 		    </p>
@@ -55,7 +56,7 @@
 				    <button type="submit" name="submitBtn" class="btn btn-lg btn-block btn-primary" id="submit-token-btn">Submit</button>
   			    </div>
 		    </form>
-		    <div id="qr" style="display: none; padding: 50px 0;">
+		    <div id="qr" style="visibility: hidden; min-height: 350px; padding: 50px 0;">
 			    <p>Scan this QR code with your iOS device to launch CI2Go.</p>
 			    <div id="qrcode"></div>
 		    </div>
