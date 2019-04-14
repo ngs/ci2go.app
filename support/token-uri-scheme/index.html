@@ -20,7 +20,7 @@
 			    return;
 		    }
 		    uri = 'ci2go://ci2go.app/token/' + token
-		    if (navigator.userAgent.indexOf('iPhone OS') !== -1) {
+		    if (/iP(hone|ad|od)/.test(navigator.userAgent)) {
 			    document.location = uri;
 		    }
 			qr = qrcode(4, 'L');
