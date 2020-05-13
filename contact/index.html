@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/doc.css" />
     <title>Contact author of CI2Go</title>
+    <script src="https://kit.fontawesome.com/1a6159dd01.js" crossorigin="anonymous"></script>
     <script>
       async function onSubmit(e) {
         e.preventDefault();
@@ -56,7 +57,7 @@
   </head>
   <body>
     <div class="container doc">
-      <h1>Contact</h1>
+      <h1><i class="far fa-envelope"></i> Contact</h1>
       <p>Please provide feedback</p>
     </div>
     <div class="container" id="formWrap">
@@ -72,13 +73,13 @@
         </div>
 
         <div class="form-group">
-          <label for="emailInput">Email address</label>
+          <label for="emailInput">Email address <span class="badge badge-secondary">Required</span></label>
           <input type="email" id="emailInput" class="form-control" name="email" aria-describedby="emailHelp" required>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
 
         <div class="form-group">
-          <label for="messageText">Message</label>
+          <label for="messageText">Message  <span class="badge badge-secondary">Required</span></label>
           <textarea required rows="5" id="messageText" class="form-control" name="message"></textarea>
         </div>
         <div class="form-group">
