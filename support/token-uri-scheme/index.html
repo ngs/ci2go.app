@@ -9,33 +9,6 @@
     <link rel="stylesheet" href="../../css/doc.css">
     <title>Trouble signing in to CI2Go?</title>
     <script src="https://kit.fontawesome.com/1a6159dd01.js" crossorigin="anonymous"></script>
-    <script>
-      function onSubmit(e) {
-        e.preventDefault();
-        var form = e.target
-            , token = form.token.value
-          , valid = /^[a-f0-9]{40}$/.test(token)
-          , uri
-          , qr
-          ;
-        if (!valid) {
-          alert('Please input valid API token');
-          return;
-        }
-        uri = 'ci2go://ci2go.app/token/' + token
-        try {
-          document.location = uri;
-        } catch(e) {
-          console.error(e);
-        }
-        qr = qrcode(4, 'L');
-        qr.addData(uri);
-        qr.make();
-        document.getElementById('qrcode').innerHTML = qr.createImgTag(5);
-        document.getElementById('qr').style.visibility = 'visible';
-        document.location.href = '#qr';
-      }
-  </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56666052-4"></script>
   <script>
@@ -87,5 +60,6 @@
       </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.3/qrcode.min.js"></script>
+    <script src="../../js/token-uri-scheme.js"></script>
   </body>
 </html>
