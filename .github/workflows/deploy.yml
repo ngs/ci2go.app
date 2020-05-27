@@ -1,3 +1,8 @@
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   deploy:
     name: Upload to Amazon S3
